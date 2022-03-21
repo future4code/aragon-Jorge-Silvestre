@@ -1,0 +1,4 @@
+# Primeira semana Labenu, O que eu aprendi?
+
+   Nessa semana de onboarding da Labenu, aprendi o que é um **terminal**, que existem varios terminais como Bash, Zsh, CMD, PowerShell, GitBash e etc. E alguns comandos que vou listar a seguir echo, whoami, clear, pwd, ls, cd, mkdir, touch, rm, mv, cp, cat, head, tail, grep.
+   Também aprendi o que é **Git**, o que é **GitHub**, e que eles **não** são a mesma coisa, isso mesmo Git não é a abreviação de GitHub são duas coisas diferentes, também vi alguns comandos como git clone, git status, git add, git add --all, git commit -m, git log, git branch, git checkout, git push origin, git pull origin.
