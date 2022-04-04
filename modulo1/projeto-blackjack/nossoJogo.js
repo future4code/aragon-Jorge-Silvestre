@@ -27,6 +27,14 @@ if(confirm("Quer iniciar uma nova rodada?")) {
 console.log(`Usuário - cartas: ${carta1Usuario.texto} ${carta2Usuario.texto}  - pontuação ${pontosUsuario}`)
 
 console.log(`Computador - cartas: ${carta1Computador.texto} ${carta2Computador.texto}  - pontuação ${pontosComputador}`)
+	
+if (pontosUsuario > pontosComputador) {
+      console.log("O usuário ganhou!")
+   } else if (pontosComputador > pontosUsuario) {
+      console.log("O computador ganhou!")
+   }  else {
+      console.log("Empate!")
+   }
 
 } else {
 	console.log("O jogo acabou.")
