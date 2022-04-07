@@ -85,6 +85,14 @@ div img {
     font-size: 60px;
 }
 
+#container-para-comprar > p {
+    display: block;
+}
+
+#container-de-descricao {
+    padding-top: 100px;
+}
+
 
 /**
   *
@@ -129,6 +137,3 @@ td button {
     background-color: #635a3d
 }
 
-#container-para-comprar > p {
-    display: block;
-}
