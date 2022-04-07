@@ -144,3 +144,8 @@ td button {
 .tamanho-img-padrao {
     width: 60px;
 }
+
+.container-do-search img {
+    background-color: white;
+    width: 15px;
+}
