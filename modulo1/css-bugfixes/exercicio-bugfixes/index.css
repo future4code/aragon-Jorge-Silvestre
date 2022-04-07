@@ -157,3 +157,10 @@ table button:active {
 table button:hover {
     background-color: #f7d025;
 }
+
+.container-do-search input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 4px;
+}
