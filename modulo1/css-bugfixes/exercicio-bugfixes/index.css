@@ -140,3 +140,7 @@ td button {
 .centralizar {
     text-align: center;
 }
+
+.tamanho-img-padrao {
+    width: 60px;
+}
