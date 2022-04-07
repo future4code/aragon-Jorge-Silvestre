@@ -149,3 +149,11 @@ td button {
     background-color: white;
     width: 15px;
 }
+
+table button:active {
+    color: white;
+}
+
+table button:hover {
+    background-color: #f7d025;
+}
