@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Source Sans Pro",sans-serif;
+    font-weight: 300;
+}
+
+nav {
+    background: linear-gradient(90deg,#000 60%,#771e30);
+    height: 45px;
+    border-radius: 150px 150px 150px 150px;
+    margin-top: 5px;
+    border: 2px solid #b8b8bb;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-top: 1%;
+
+    
+}
+
+nav a {
+    text-decoration: none;
+    color: #b8b8bb;
+    font-size: 20px;
+    transition-duration: 0.5s;
+    padding-left: 12%;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+nav li {
+    display: inline;
+
+}
+
+nav a:hover{
+    color: white;
+}
+
+header{
+    text-align: center;
+    background: linear-gradient(90deg,#000 60%,#771e30);
+    border-radius: 0 150px 0 150px;
+}
+
+header figure img{
+    border-radius: 30%;       
+    width: 5%;
+    padding: 12px;
+}
+
+header figure {
+    display: inline;
+}
+
+header h1, p {
+    color: #b8b8bb;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.logo-labenu-1, .logo-labenu-2 {
+    width: 2%;
+}
+
+footer {
+    background: linear-gradient(90deg,#000 60%,#771e30);
+    color: #b8b8bb;
+    text-align: center;
+}
+
+footer img{
+    background-color: #771e30c7;
+    margin-left: 10px;
+}
+
+main h1, h2 {
+    margin: 20px;
+}
+
+main{
+    text-align: center;
+}
+
+main figure img {
+    width: 45%;
+}
+
+.projeto-1 {
+    margin: 10px;
+}
