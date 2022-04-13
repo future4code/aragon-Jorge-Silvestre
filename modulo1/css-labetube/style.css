@@ -61,3 +61,42 @@ footer{
 #video-irlanda{
     text-align: center;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    main{
+        grid-template-columns: 1fr;
+        margin: 17% 5% 25% 5%;
+    }
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    #ultimo-video{
+        padding-bottom: 16%;
+    }
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    main{
+        margin: 17% 5% 25% 5%;
+        grid-template-columns: 1fr;
+    }
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    #ultimo-video{
+        padding-bottom: 16%;
+    }
+}       
+
