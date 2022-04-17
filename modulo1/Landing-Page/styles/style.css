@@ -228,3 +228,98 @@ footer h2{
 #nosso-time table td{
     font-weight: bold;
 }
+
+/* Aqui termina a estilização nosso time */
+
+/* Aqui começa a estilização para deixar responsivo */
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    header{
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }   
+    
+    .wrapper1{
+        padding: 0;
+        position: relative;
+        max-width: 480px;
+    }
+    
+    .wrapper1 nav button{   
+        display: none;
+    }
+
+    main #section1{
+        background-image: none;
+    }
+
+    footer{
+        width: 100%;
+        position:fixed;
+        bottom: 0;
+    }
+
+    .wrapper3{
+        margin-top: 0px;
+    }
+
+    #gridcard{
+        display: block;
+    }
+
+    #img-about-us{
+        max-width: 350px;
+    }
+
+    main{
+        margin-top: 124px;
+        margin-bottom: 100px;
+    }
+
+    #main-about-us{
+        margin-top: 124px;
+    }
+}
+    
+@media screen and (min-device-width : 481px) and (max-device-width : 822px) {
+    header{
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }   
+
+    main #section1{
+        background-image: none;
+    }
+
+    main{
+        margin-top: 124px;
+        margin-bottom: 190px;
+    }
+
+    footer{
+        width: 100%;
+        position:fixed;
+        bottom: 115px;
+    }
+
+    footer li{
+        margin: 0 10px 0 10px;
+    }
+
+    .wrapper3{
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #img-about-us{
+        max-width: 700px;
+    }
+
+    #main-about-us{
+        margin-top: 124px;
+    }
+}
+    
