@@ -1,0 +1,325 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+/* Aqui começa a estilização Header  */
+
+header{
+    background-color: rgb(194, 57, 73);
+}
+
+header img{
+    width: 100px;
+    
+}
+
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+header li{
+    padding: 0 50px;
+}
+
+header button{
+    border: none;
+    background-color: white;
+    border-radius: 100px;
+    color: black;
+    cursor: pointer;
+    padding: 14px 30px;
+    font-weight: 400;
+}
+
+header button:hover{
+    background-color: rgb(204, 20, 42);
+    color: white;
+    border: 2px solid white;
+}
+
+.wrapper1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    background-color: rgb(194, 57, 73);
+    max-width: 1280px;
+}
+
+/* Aqui Termina a estilização Header  */
+
+/* Aqui começa a estilização Main  */
+
+#section1{
+    background-image: url(img-background1.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#section2, #cards{
+    background-color: rgb(194, 57, 73);
+    color: white;
+    padding-top: 28px;
+    border-bottom:;
+}
+
+
+#section2 button{
+    border: none;
+    background-color: white;
+    border-radius: 100px;
+    color: black;
+    cursor: pointer;
+    padding: 14px 30px;
+    font-weight: 400;
+}
+
+#section2 button:hover{
+    background-color: rgb(204, 20, 42);
+    color: white;
+    border: 2px solid white;
+}
+
+.wrapper2{
+    display: flex;
+    flex-direction: column;
+    padding: 0 28px;
+    width: 100%;
+    margin-top: 52px;
+    text-align: center;
+    max-width: 1280px;
+}
+
+main p{
+    margin: 2rem;
+}
+
+main button{
+    border: none;
+    background-color: rgb(194, 57, 73);
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    padding: 14px 30px;
+    font-weight: 400;
+    align-self: center;
+    margin: 1rem;
+}
+
+main button:hover{
+    background-color: rgb(204, 20, 42);
+    border: 2px solid black;
+
+}
+
+.imgcard{
+    width: 100px;
+}
+
+.cardwrapper{
+    padding: 28px 0;
+    text-align: center;
+}
+
+#img3{
+    width: 150px;
+}
+
+#gridcard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+main section h1{
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+#cards{
+    margin-top: 52px;
+}
+
+/* Aqui termina a estilização Main  */
+
+/* Aqui começa a estilização Footer  */
+
+.wrapper3{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 24px 10px 24px;
+    margin-top: 52px;
+    max-width: 1280px;
+}
+
+footer{
+    background-color: rgb(194, 57, 73);
+    color: white;
+    text-align: center;
+}
+
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+
+footer h2{
+    margin-bottom: 10px;
+}
+
+/* Aqui termina a estilização Footer  */
+
+/* Aqui começa a estilização about us  */
+
+#main-about-us{
+    text-align: center;
+    margin-top: 52px;
+    padding: 0 28px;
+    max-width: 1280px;
+}
+
+/* Aqui termina a estilização about us */
+
+/* Aqui começa a estilização nosso time  */
+
+#nosso-time table img{
+    width: 200px;
+}
+
+#nosso-time th, td{
+    border: 1px solid black;
+}
+
+#nosso-time{
+    text-align: center;
+    padding-top: 28px;
+    max-width: 1280px;
+}
+
+#nosso-time h1{
+    padding-bottom: 28px;
+}
+
+#nosso-time table{
+    margin: auto;
+    background-color: rgb(194, 57, 73);
+    color: white;
+}
+
+#nosso-time table td{
+    font-weight: bold;
+}
+
+/* Aqui termina a estilização nosso time */
+
+/* Aqui começa a estilização para deixar responsivo */
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    header{
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }   
+    
+    .wrapper1{
+        padding: 0;
+        position: relative;
+        max-width: 480px;
+    }
+    
+    .wrapper1 nav button{   
+        display: none;
+    }
+
+    main #section1{
+        background-image: none;
+    }
+
+    footer{
+        width: 100%;
+        position:fixed;
+        bottom: 0;
+    }
+
+    .wrapper3{
+        margin-top: 0px;
+    }
+
+    #gridcard{
+        display: block;
+    }
+
+    #img-about-us{
+        max-width: 350px;
+    }
+
+    main{
+        margin-top: 124px;
+        margin-bottom: 100px;
+    }
+
+    #main-about-us{
+        margin-top: 124px;
+    }
+}
+    
+@media screen and (min-device-width : 481px) and (max-device-width : 822px) {
+    header{
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }   
+
+    main #section1{
+        background-image: none;
+    }
+
+    main{
+        margin-top: 124px;
+        margin-bottom: 190px;
+    }
+
+    footer{
+        width: 100%;
+        position:fixed;
+        bottom: 115px;
+    }
+
+    footer li{
+        margin: 0 10px 0 10px;
+    }
+
+    .wrapper3{
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #img-about-us{
+        max-width: 700px;
+    }
+
+    #main-about-us{
+        margin-top: 124px;
+    }
+}
+    
