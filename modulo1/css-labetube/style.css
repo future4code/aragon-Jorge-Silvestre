@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5%;
+    background-color: black;
+    color: red;
+}
+
+main{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2%;
+    margin: 5%;
+}
+
+main video{
+    width: 100%;
+}
+
+main h2{
+    text-align: center;
+}
+
+main section{
+    box-shadow: 2px 2px 2px lightslategray;
+}
+
+header a{
+    text-decoration: none;
+    color: inherit;
+}
+
+header input{
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+    background-color: black;
+    color: red;
+    padding: 1.5%;
+    font-family: sans-serif;
+}
+
+.video-maior{
+    width: 80vw;
+}
+
+.video-1{
+    display: flex;
+    align-items: center;
+}
+
+#video-irlanda{
+    text-align: center;
+}
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    main{
+        grid-template-columns: 1fr;
+        margin: 17% 5% 25% 5%;
+    }
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    #ultimo-video{
+        padding-bottom: 16%;
+    }
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    main{
+        margin: 17% 5% 25% 5%;
+        grid-template-columns: 1fr;
+    }
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    #ultimo-video{
+        padding-bottom: 16%;
+    }
+}       
+
