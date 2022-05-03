@@ -1,0 +1,211 @@
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists
+Authorization: jorge-silvestre-aragon   
+Content-Type: application/json
+
+{
+    "name": "Musica-Eletronica" 
+}
+
+###
+
+POST https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Nostalgia"
+}
+
+###
+
+POST https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Rock-Internacional"
+}
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/86ab1c49-a349-4404-b5fc-7bf0bff753b6/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Infinity", 
+    "artist": "Jaymes Young",
+    "url": "https://www.youtube.com/watch?v=PWqEPKduGm8"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/86ab1c49-a349-4404-b5fc-7bf0bff753b6/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Mortals", 
+    "artist": "Warriyo",
+    "url": "https://www.youtube.com/watch?v=yJg-Y5byMMw"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/1cc8572d-d377-4112-a814-9f5c47603691/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Give Me Everything", 
+    "artist": "Pitbull",
+    "url": "https://www.youtube.com/watch?v=EPo5wWmKEaI"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/1cc8572d-d377-4112-a814-9f5c47603691/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Whistle", 
+    "artist": "Flo Rida",
+    "url": "https://www.youtube.com/watch?v=TRWSj95xsTc"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Wind Of Change", 
+    "artist": "Scorpions",
+    "url": "https://www.youtube.com/watch?v=n4RjJKxsamQ"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Sweet Child O' Mine", 
+    "artist": "Guns N' Roses",
+    "url": "https://www.youtube.com/watch?v=1w7OgIMMRc4"
+}
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/86ab1c49-a349-4404-b5fc-7bf0bff753b6/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/1cc8572d-d377-4112-a814-9f5c47603691/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=Rock-Internacional
+Authorization: jorge-silvestre-aragon   
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Livin' On A Prayer", 
+    "artist": "Bon Jovi",
+    "url": "https://www.youtube.com/watch?v=lDK9QqIzhwk"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "It's My Life", 
+    "artist": "Bon Jovi",
+    "url": "https://www.youtube.com/watch?v=vx2u5uUu3DE"
+}
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Bring Me To Life", 
+    "artist": "Evanescence",
+    "url": "https://www.youtube.com/watch?v=3YxaaGgTQYM"
+}
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+DELETE https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks/9620afa6-c5c9-4d61-8284-73ec144f6635
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "Californication", 
+    "artist": "Red Hot Chili Peppers",
+    "url": "https://www.youtube.com/watch?v=YlUKcNNmywk"
+}
+
+###
+
+Post https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
+
+{
+    "name": "CASTLE OF GLASS", 
+    "artist": "Linkin Park",
+    "url": "https://www.youtube.com/watch?v=ScNNfyq3d_w"
+}
+
+###
+
+GET https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/8fac5b1c-fffd-4cd8-9a6f-4804cef2e6ff/tracks
+Authorization: jorge-silvestre-aragon
+Content-Type: application/json
