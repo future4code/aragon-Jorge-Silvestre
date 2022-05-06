@@ -4,18 +4,22 @@ import PaginaPlaylists from "./pages/PaginaPlaylists/PaginaPlaylists";
 
 export default class App extends React.Component {
   state = {
-    telaAtual: "playlists"
+    telaAtual: "criarplaylist"
   }
 
   escolhePagina = () => {
     switch (this.state.telaAtual){
       case "criarplaylist":
-        return <PaginaCriarPlaylists />
+        return <PaginaCriarPlaylists mudarTela={this.mudaDeTela}/>
       case "playlists":
-        return <PaginaPlaylists />
+        return <PaginaPlaylists mudarTela={this.mudaDeTela}/>
       default:
         <PaginaCriarPlaylists />
     }
+  }
+
+  mudaDeTela = (nomeTela) => {
+    this.setState({ telaAtual: nomeTela})
   }
 
   render() {

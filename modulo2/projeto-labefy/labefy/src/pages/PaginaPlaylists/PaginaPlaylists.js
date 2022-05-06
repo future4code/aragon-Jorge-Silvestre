@@ -24,15 +24,40 @@ export default class PaginaPlaylists extends React.Component{
         .catch((error) => console.log(error))
     }
 
+    delPlaylist = (id) => {
+        axios
+            .delete(`${BASE_URL}/${id}
+            `,
+                {
+                    headers: {
+                        Authorization: "jorge-silvestre-aragon"
+                    }
+                }
+            )
+            .then((response) => {
+                alert("Playlist Deletada com sucesso!")
+                this.pegaPlaylists()
+            })
+            .catch((error) => {
+                alert("Ocorreu um erro, tente novamente")
+            })
+    }
+
     render(){
         const playlists = this.state.playlists.map((playlist) => {
-            return <PlaylistCard key={playlist.id}>{playlist.name}</PlaylistCard>
+            return <PlaylistCard key={playlist.id}>
+                {playlist.name}
+                <button onClick={() => this.delPlaylist(playlist.id)}>Apagar</button>
+            </PlaylistCard>
         })
 
         return(
+            <div>
             <ul>
                 {playlists}
             </ul>
+            <button onClick={() => this.props.mudarTela("criarplaylist")}>Ir para tela de Criar Plailysts</button>
+            </div>
         )
     }
 }
