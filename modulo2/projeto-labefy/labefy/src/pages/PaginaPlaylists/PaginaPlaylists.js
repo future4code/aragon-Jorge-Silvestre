@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
 import {PlaylistCard} from "./styled"
+import { Div } from "./styled";
 
 export default class PaginaPlaylists extends React.Component{
     state = {
@@ -45,19 +46,22 @@ export default class PaginaPlaylists extends React.Component{
 
     render(){
         const playlists = this.state.playlists.map((playlist) => {
-            return <PlaylistCard key={playlist.id}>
+            return <PlaylistCard 
+                key={playlist.id}>
                 {playlist.name}
+                <button onClick={() => this.props.vaiParaTelaDetalhes(playlist.id)}>Detlhes</button>
                 <button onClick={() => this.delPlaylist(playlist.id)}>Apagar</button>
             </PlaylistCard>
         })
 
         return(
-            <div>
+            <Div>
+            <h2>Playlists</h2>    
             <ul>
                 {playlists}
             </ul>
             <button onClick={() => this.props.mudarTela("criarplaylist")}>Ir para tela de Criar Plailysts</button>
-            </div>
+            </Div>
         )
     }
 }

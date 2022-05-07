@@ -8,9 +8,13 @@ margin: 10px auto;
 align-items: center;
 border: 1px solid black;
 button {margin: 10px 0}
-label {margin: 10px 0}
+a {text-decoration: none; color: #000; &:hover {
+    text-decoration: underline;
+}}
 &:hover {
-    cursor: pointer;
     background-color: lightblue;
 }
+`
+export const Span = styled.span`
+margin: 0 10px;
 `

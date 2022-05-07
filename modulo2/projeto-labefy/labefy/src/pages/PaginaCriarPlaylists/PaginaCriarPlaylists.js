@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
+import { Div } from "./styled";
 
 export default class PaginaCriarPlaylists extends React.Component{
     state = {
@@ -36,7 +37,7 @@ export default class PaginaCriarPlaylists extends React.Component{
 
     render(){
         return(
-            <div>
+            <Div>
                 <h2>Crie uma Plailyst de Músicas</h2>
                 <label>
                     Nome da Playlist:
@@ -45,9 +46,9 @@ export default class PaginaCriarPlaylists extends React.Component{
                         onChange={this.onChangeInputName}
                     />
                 </label>
-                <button onClick={this.createPlaylist}>Cadastrar Usuario</button>
+                <button onClick={this.createPlaylist}>Cadastrar Playlist</button>
                 <button onClick={() => this.props.mudarTela("playlists")}>Ir para tela de Plailysts</button>
-            </div>
+            </Div>
         )
     }
 }
