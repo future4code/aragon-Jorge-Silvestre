@@ -1,11 +1,24 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 import PokeCard from "./components/PokeCard";
-
+ 
 function App() {
   // Passo 3b
   // Implemente suas variáveis de estado aqui.
+  const [pokeList, setPokeList] = useState([])
+  const [pokeName, setPokeName] = useState("")
 
   // Passo 3c
+     useEffect(() => {
+      axios
+         .get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+         .then((res) => {
+           setPokeList(res.data.results)
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+     }, [])
   // componentDidMount = () => {
   //   axios
   //     .get("https://pokeapi.co/api/v2/pokemon/?limit=151")
@@ -21,9 +34,17 @@ function App() {
   const changePokeName = (event) => {
     // Passo 3d
     // Implementa a função aqui.
+    setPokeName(event.target.value)
   };
 
   // Passo 3e
+     const pokeOptions = pokeList.map(pokemon => {
+       return (
+         <option key={pokemon.name} value={pokemon.name}>
+           {pokemon.name}
+           </option>
+       )
+     })
   // const pokeOptions = this.state.pokeList.map(pokemon => {
   //   return (
   //     <option key={pokemon.name} value={pokemon.name}>
@@ -33,7 +54,7 @@ function App() {
   // });
 
   // Passo 4a
-  const pokemon = true && <PokeCard />;
+  const pokemon = pokeName && <PokeCard pokeName={pokeName}/>;
 
   return (
     <>
@@ -44,10 +65,10 @@ function App() {
       <nav>
         <label htmlFor={"select-pokemon"}>Selecione um pokemon: </label>
          {/* Passo 3a */}
-        <select id={"select-pokemon"} >
+        <select id={"select-pokemon"} onChange={changePokeName}>
           <option value={""}>Nenhum</option>
           {/* Passo 3e */}
-          {/* {pokeOptions} */}
+          {pokeOptions}
         </select>
       </nav>
       <main>
