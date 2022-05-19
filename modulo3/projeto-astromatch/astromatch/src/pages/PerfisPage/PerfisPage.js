@@ -4,39 +4,68 @@ import "./Perfis.css"
 
 function PerfisPage () {
 
-    const [img, setImg] = useState("")
-    const [nome, setNome] = useState("")
-    const [idade, setIdade] = useState(0)
-    const [biografia, setBiografia] = useState("")
-    const [alt, setAlt] = useState("")
+    const [perfil,setPerfil] = useState({})
     const [mudarPerfil, setMudarPerfil] = useState(0)
 
-    useEffect(() => {
+    
+    useEffect (() => {
+        buscaPerfil()
+    },[mudarPerfil])
+
+    const buscaPerfil = () => {
         axios
         .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/jorge-silvestre-aragon/person")
             .then((res) => {
-                setImg(res.data.profile.photo)
-                setNome(res.data.profile.name)
-                setIdade(res.data.profile.age)
-                setBiografia(res.data.profile.bio)
-                setAlt(res.data.profile.alt)
+                setPerfil(res.data.profile)
             })
             .catch((err) => {
                 console.error(err.data)
             })
-    },[mudarPerfil])
+    }
 
     const proximoPerfil = () => {
         setMudarPerfil(mudarPerfil + 1)
     }
 
+    const escolhePerfil = (perfilId,escolha) => {
+        const body = {
+            id: perfilId,
+            choice: escolha
+        }
+
+        axios
+        .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/jorge-silvestre-aragon/choose-person",body)
+        .then(() => {
+            buscaPerfil()
+        })
+        .catch((err) => {
+            console.error(err.data)
+        })
+    }
+
+    const resetarPerfis = () => {
+        axios
+        .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/jorge-silvestre-aragon/clear")
+        .then(() => {
+            alert("Perfis resetados com sucesso")
+            buscaPerfil()
+        })
+        .catch((err) => {
+            console.error(err.data)
+        })
+    }
+
     return(
         <div>
             <h3>Perfis</h3>
-            <img src={img} alt={alt}/>
-            <p>Nome: {nome}</p>
-            <p>Idade: {idade}</p>
-            <p>Biografia: {biografia}</p>
+            <img src={perfil.photo} alt={perfil.photo_alt}/>
+            <p>Nome: {perfil.name}</p>
+            <p>Idade: {perfil.age}</p>
+            <p>Biografia: {perfil.bio}</p>
+            <button onClick={() => {escolhePerfil(perfil.id,false)}}>Deslike</button>
+            <button onClick={() => {escolhePerfil(perfil.id,true)}}>Like</button>
+            <br/>
+            <button onClick={resetarPerfis}>Resetar Perfis</button>
             <button onClick={proximoPerfil}>Próximo perfil</button>
         </div>
     )

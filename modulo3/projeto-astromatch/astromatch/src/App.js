@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 function App() {
 
   const [telaAtual, setTelaAtual] = useState("Perfis")
-  const [nomeDoBotao, setNomeDoBotao] = useState("Perfis")
+  
 
   const selecionaPagina = () => {
     switch (telaAtual){
