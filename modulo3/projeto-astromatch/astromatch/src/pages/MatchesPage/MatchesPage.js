@@ -31,6 +31,7 @@ function MatchesPage() {
     
     return (
         <div>
+            <h2>Matches</h2>
             {todosMatches}
         </div>
     )

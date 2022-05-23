@@ -5,7 +5,7 @@ function Header(props) {
     return (
         <header>
             <h1>AstroMatch</h1>
-            <button onClick={props.mudaPagina}>{props.nomeBotao()}</button>
+            <button className='glow-on-hover' onClick={props.mudaPagina}>{props.nomeBotao()}</button>
             <hr />
         </header>
     );
