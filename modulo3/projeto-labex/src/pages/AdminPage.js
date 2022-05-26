@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
 import { useRequestData } from "../hooks/useRequestData"
-import { navigateToHome } from "../routes/cordinator"
+import { navigateToHome, navigateToTripDetails } from "../routes/cordinator"
 
 function AdminPage() {
     const token = localStorage.getItem("token")
@@ -16,6 +16,7 @@ function AdminPage() {
             navigateToHome(navigate)
         }
     }, [])
+
 
 
    const deleteTrip = (id) => {
@@ -46,7 +47,7 @@ function AdminPage() {
                 <p>Planeta:{trip.planet}</p>
                 <p>Duração:{trip.durationInDays}</p>
                 <p>Data:{trip.date}</p>
-                <button>Detalhes</button>
+                <button onClick={() => navigateToTripDetails(navigate,trip.id)}>Detalhes</button>
                 <button onClick={() => deleteTrip(trip.id)}>Remover</button>
                 <hr />
             </li>

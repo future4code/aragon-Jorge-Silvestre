@@ -8,8 +8,14 @@ export const useRequestData = (url, initialState) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const getData = () => {
+        const header = { 
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        }
+
         axios
-            .get(url)
+            .get(url,header)
             .then((res) => {
                 setData(res.data)
                 setIsLoading(false)
