@@ -2,13 +2,14 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header"
+import { API_CLIENT, BASE_URL } from "../constants/urls"
 import { useRequestData } from "../hooks/useRequestData"
 import { navigateToHome, navigateToTripDetails } from "../routes/cordinator"
 
 function AdminPage() {
     const token = localStorage.getItem("token")
     const navigate = useNavigate()
-    const [data, isLoading, getData] = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips")
+    const [data, isLoading, getData] = useRequestData(`${BASE_URL}/${API_CLIENT}/trips`)
 
 
     useEffect(() => {
@@ -27,7 +28,7 @@ function AdminPage() {
         }
 
        axios
-       .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips/${id}`,header)
+       .delete(`${BASE_URL}/${API_CLIENT}/trips/${id}`,header)
        .then((res) => {
             alert("Viagem excluida com sucesso!")
              getData()

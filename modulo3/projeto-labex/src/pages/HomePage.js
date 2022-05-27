@@ -1,9 +1,10 @@
 import Header from "../components/Header";
+import { API_CLIENT, BASE_URL } from "../constants/urls";
 import { useRequestData } from "../hooks/useRequestData";
 
 
 function HomePage() {
-  const [data, isLoading] = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trips", {})
+  const [data, isLoading] = useRequestData(`${BASE_URL}/${API_CLIENT}/trips`, {})
 
 
 

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_CLIENT, BASE_URL } from "../constants/urls"
 import { navigateToAdmin, navigateToHome } from "../routes/cordinator"
 
 function Header() {
@@ -23,7 +24,7 @@ function Header() {
         }
 
         axios
-            .post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/login", body)
+            .post(`${BASE_URL}/${API_CLIENT}/login`, body)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
                 alert("login realizado com sucesso!")
