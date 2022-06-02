@@ -1,0 +1,9 @@
+footer{
+    background-image: linear-gradient(to right, #f26a6c, #e0686a);
+    color: white;
+}
+
+footer p{
+    font-weight: bold;
+    padding: 20px;
+}
