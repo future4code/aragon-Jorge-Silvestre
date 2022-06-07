@@ -1,55 +1,40 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { goBack, goToFeed } from "../routes/coordinator";
+import useForm from "../hooks/useForm";
+import useUnprotectedPage from "../hooks/useUnprotectedPage";
+import { goBack} from "../routes/coordinator";
+import { requestSignup } from "../services/requests";
 
 export default function SignUpPage() {
+    useUnprotectedPage()
     const navigate = useNavigate()
-    const [form, setform] = useState({
-        username: "",
-        email: "",
-        password: ""
-    })
 
-    const onChangeForm = (e) => {
-        setform({ ...form, [e.target.name]: e.target.value })
+    const { form, onChange, clear } = useForm({ name: "", email: "", password: "" })
+    
+
+    const signup = (event) => {
+        event.preventDefault()
+        
+        requestSignup(form, clear, navigate)
     }
 
-    const signup = (e) => {
-        e.preventDefault()
-        axios.post("https://labeddit.herokuapp.com/users/signup", form)
-            .then((res) => {
-                alert("Usuario cadastrado com sucesso")
-                window.localStorage.setItem("token-labeddit",res.data.token)
-                goToFeed(navigate)
-            })
-            .catch((err) => {
-                console.error("Erro ao se cadastrar")
-                console.log(err)
-            })
-    }
-    useEffect(() => {
-        const token = window.localStorage.getItem("token-labeddit")
-        if(token) {
-            goToFeed(navigate)
-        }
-    },[])
 
     return (
         <>
-            <Header />
+            <Header
+                isProtected={false}
+            />
             <main>
                 <h2>Cadastro de Novo Usuário</h2>
                 <form onSubmit={signup}>
-                    <label htmlFor="nome">Nome:</label>
-                    <input id="nome" name="username" onChange={onChangeForm} value={form.username} required />
+                    <label htmlFor="name">Nome:</label>
+                    <input id="name" name="name" onChange={onChange} title="O nome deve ter no mínimo 3 caracteres" value={form.name} required />
                     <br />
                     <label htmlFor="email">E-mail:</label>
-                    <input id="email" name="email" onChange={onChangeForm} value={form.email} required/>
+                    <input id="email" name="email" onChange={onChange} value={form.email} required />
                     <br />
                     <label htmlFor="senha">Senha:</label>
-                    <input id="senha" name="password" onChange={onChangeForm} value={form.password} type="password" required/>
+                    <input id="senha" name="password" onChange={onChange} title="A senha deve ter no mínimo 8 e no máximo 30 caracteres" value={form.password} type="password" required />
                     <br />
                     <button>cadastrar</button>
                 </form>

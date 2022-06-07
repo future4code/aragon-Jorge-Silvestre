@@ -1,53 +1,37 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { goToFeed, goToSignUp } from "../routes/coordinator";
+import useForm from "../hooks/useForm";
+import useUnprotectedPage from "../hooks/useUnprotectedPage";
+import { goToSignUp } from "../routes/coordinator";
+import { requestLogin } from "../services/requests";
 
 export default function LoginPage() {
-    const navigate = useNavigate()
-    const [form, setform] = useState({
-        email:"",
-        password: ""
-    })
+    useUnprotectedPage()
 
-    const onChangeForm = (e) => {
-        setform({...form, [e.target.name]: e.target.value})
-    }
+    const navigate = useNavigate()
+
+    const {form, onChange, clear} = useForm({email: "", password: ""})
 
     const login = (e) => {
         e.preventDefault()
-        axios.post("https://labeddit.herokuapp.com/users/login", form)
-            .then((res) => {
-                alert("Login realizado com sucesso")
-                window.localStorage.setItem("token-labeddit",res.data.token)
-                goToFeed(navigate)
-            })
-            .catch((err) => {
-                console.error("Erro ao se cadastrar")
-                console.log(err)
-            })
+        requestLogin(form, clear, navigate)
     }
 
-    useEffect(() => {
-        const token = window.localStorage.getItem("token-labeddit")
-        if(token) {
-            goToFeed(navigate)
-        }
-    },[])
 
     return (
         <>
-            <Header />
+            <Header
+                isProtected={false} 
+            />
             <hr />
             <main>
                 <h2>Login</h2>
                 <form onSubmit={login}>
                     <label htmlFor="email">E-mail:</label>
-                    <input id="email" name="email" onChange={onChangeForm} value={form.email} required/>
+                    <input id="email" type="email" name="email" onChange={onChange} value={form.email} required/>
                     <br/>
                     <label htmlFor="senha">Senha:</label>
-                    <input id="senha" name="password" onChange={onChangeForm} value={form.password} type="password" required/>
+                    <input id="senha" name="password" onChange={onChange} value={form.password} type="password" required/>
                     <br/>
                     <button>Entrar</button>
                 </form>

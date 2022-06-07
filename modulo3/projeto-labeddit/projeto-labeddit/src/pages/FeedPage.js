@@ -1,25 +1,81 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import Header from "../components/Header";
-import { goToLogin } from "../routes/coordinator";
+import PostCard from "../components/PostCard";
+import GlobalStateContext from "../global/GlobalStateContext";
+import useForm from "../hooks/useForm";
+import useProtectedPage from "../hooks/useProtectedPage";
+import { requestCreatePost } from "../services/requests";
 
 export default function FeedPage() {
-    const navigate = useNavigate()
+    
+
+    useProtectedPage()
+
+    const { form, onChange, clear } = useForm({ title: "", body: "" })
+
+    const { states, getters } = useContext(GlobalStateContext)
+
+    const { posts } = states
+
+    const { getPosts } = getters
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token-labeddit")
-        if(!token) {
-            goToLogin(navigate)
-        }
-    },[])
+        getPosts()
+    }, [])
 
-    return(
+    const createPost = (event) => {
+        event.preventDefault()
+
+        requestCreatePost(form, clear, getPosts)
+    }
+
+    const showPosts = posts.lenght && posts.map((post) => {
+        return (
+            <PostCard
+                key={post.id}
+                post={post}
+            />
+        )
+    })
+
+    return (
         <>
-        <Header/>
-        <hr/>
-        <h2>Crie um novo Post</h2>
-        <hr/>
-        <h2>Lista de Posts</h2>
+            <Header
+                isProtected={true}
+            />
+            <hr />
+            <section>
+                <h2>Crie um novo Post</h2>
+                <form onSubmit={createPost}>
+                    <label htmlFor={"title"}> Título: </label>
+                    <input
+                        id={"title"}
+                        name={"title"}
+                        value={form.title}
+                        onChange={onChange}
+                        title={"O nome deve ter no mínimo 5 caracteres"}
+                        required
+                    />
+                    <br />
+                    <label htmlFor={"body"}> Texto do post: </label>
+                    <input
+                        id={"body"}
+                        type={"text"}
+                        name={"body"}
+                        value={form.body}
+                        onChange={onChange}
+                        title={"O nome deve ter no mínimo 5 caracteres"}
+                        required
+                    />
+                    <br />
+                    <button type={"submit"}>Criar Post</button>
+                </form>
+            </section>
+            <hr />
+            <section>
+                <h2>Lista de Posts</h2>
+                {showPosts}
+            </section>
         </>
     )
 }
