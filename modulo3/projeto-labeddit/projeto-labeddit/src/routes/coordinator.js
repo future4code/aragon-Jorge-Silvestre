@@ -13,3 +13,7 @@ export const goBack = (navigate) => {
 export const goToFeed = (navigate) => {
     navigate("/")
 }
+
+export const goToPostDetailsPage = (navigate, postId) => {
+    navigate(`/post/${postId}`)
+}

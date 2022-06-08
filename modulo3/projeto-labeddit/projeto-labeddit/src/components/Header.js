@@ -4,6 +4,7 @@ import { goToLogin } from "../routes/coordinator"
 export default function Header(props) {
     const navigate = useNavigate()
     const token = window.localStorage.getItem("token-labeddit")
+    const email = window.localStorage.getItem("userEmail")
 
     const logout = () => {
         if (window.confirm("Tem certeza de que deseja sair?")) {
@@ -20,8 +21,8 @@ export default function Header(props) {
             <h1>LabEddit</h1>
             {props.isProtected && (
                 <>
-                <h3>Bem-Vindo</h3>
-                <button onClick={logout}>Logout</button>
+                    <h3>Bem-Vindo, {email}</h3>
+                    <button onClick={logout}>Logout</button>
                 </>
             )}
         </>

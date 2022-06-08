@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import useForm from "../hooks/useForm";
 import useUnprotectedPage from "../hooks/useUnprotectedPage";
-import { goBack} from "../routes/coordinator";
+import { goBack } from "../routes/coordinator";
 import { requestSignup } from "../services/requests";
 
 export default function SignUpPage() {
@@ -10,11 +10,11 @@ export default function SignUpPage() {
     const navigate = useNavigate()
 
     const { form, onChange, clear } = useForm({ name: "", email: "", password: "" })
-    
+
 
     const signup = (event) => {
         event.preventDefault()
-        
+
         requestSignup(form, clear, navigate)
     }
 

@@ -5,7 +5,12 @@ import GlobalStateContext from "./GlobalStateContext"
 
 
 const GlobalState = (props) => {
+
     const [posts, setPosts] = useState([])
+
+    const [post, setPost] = useState({})
+
+    const [postComments, setPostComments] = useState([])
 
     const getPosts = () => {
 
@@ -24,9 +29,25 @@ const GlobalState = (props) => {
             })
     }
 
-    const states = { posts }
-    const setters = { setPosts }
-    const getters = { getPosts }
+    const getPostComments = (postId) => {
+        const header = {
+            headers: {
+                authorization: localStorage.getItem("token-labeddit")
+            }
+        }
+
+        axios.get(`${BASE_URL}/posts/${postId}/comments`, header)
+            .then((res) => {
+                setPostComments(res.data)
+            }).catch((err) => {
+                console.error(err.message)
+            })
+
+    }
+
+    const states = { posts, post, postComments }
+    const setters = { setPosts, setPost, setPostComments }
+    const getters = { getPosts, getPostComments }
 
     return (
         <GlobalStateContext.Provider value={{ states, setters, getters }}>

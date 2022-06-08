@@ -7,7 +7,7 @@ import useProtectedPage from "../hooks/useProtectedPage";
 import { requestCreatePost } from "../services/requests";
 
 export default function FeedPage() {
-    
+
 
     useProtectedPage()
 
@@ -29,17 +29,18 @@ export default function FeedPage() {
         requestCreatePost(form, clear, getPosts)
     }
 
-    const showPosts = posts.lenght && posts.map((post) => {
+    const showPosts = posts.length && posts.map((post) => {
         return (
             <PostCard
                 key={post.id}
                 post={post}
+                isFeed={true}
             />
         )
     })
 
     return (
-        <>
+        <main>
             <Header
                 isProtected={true}
             />
@@ -76,6 +77,6 @@ export default function FeedPage() {
                 <h2>Lista de Posts</h2>
                 {showPosts}
             </section>
-        </>
+        </main>
     )
 }
