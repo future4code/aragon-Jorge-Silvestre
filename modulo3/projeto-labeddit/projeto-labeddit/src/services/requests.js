@@ -85,3 +85,121 @@ export const requestCreateComment = (form, clear, getPostComments, postId) => {
             console.error(err.message)
         })
 }
+
+export const requestCreatePostVote = (postId, direction, getPosts) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    const body = {
+        direction: direction
+    }
+
+    axios.post(`${BASE_URL}/posts/${postId}/votes`, body, header)
+        .then(() => {
+            alert("Voto registrado com sucesso!")
+            getPosts()
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
+
+export const requestCreateCommentVote = (commentId, direction, getPostComments, postId) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    const body = {
+        direction: direction
+    }
+
+    axios.post(`${BASE_URL}/comments/${commentId}/votes`, body, header)
+        .then(() => {
+            alert("Voto registrado com sucesso!")
+            getPostComments(postId)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
+
+export const requestChangePostVote = (postId, direction, getPosts) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    const body = {
+        direction: direction
+    }
+
+    axios.put(`${BASE_URL}/posts/${postId}/votes`, body, header)
+        .then(() => {
+            alert("Voto modificado com sucesso!")
+            getPosts()
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
+
+export const requestChangeCommentVote = (commentId, direction, getPostComments, postId) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    const body = {
+        direction: direction
+    }
+
+    axios.put(`${BASE_URL}/comments/${commentId}/votes`, body, header)
+        .then(() => {
+            alert("Voto modificado com sucesso!")
+            getPostComments(postId)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
+
+export const requestDeletePostVote = (postId, getPosts) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    axios.delete(`${BASE_URL}/posts/${postId}/votes`, header)
+        .then(() => {
+            alert("Voto removido com sucesso!")
+            getPosts()
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
+
+export const requestDeleteCommentVote = (commentId, getPostComments, postId) => {
+    const header = {
+        headers: {
+            authorization: localStorage.getItem("token-labeddit")
+        }
+    }
+
+    axios.delete(`${BASE_URL}/comments/${commentId}/votes`, header)
+        .then(() => {
+            alert("Voto removido com sucesso!")
+            getPostComments(postId)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
