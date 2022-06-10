@@ -13,9 +13,11 @@ export default function FeedPage() {
 
     const { form, onChange, clear } = useForm({ title: "", body: "" })
 
-    const { states, getters } = useContext(GlobalStateContext)
+    const { states, setters, getters } = useContext(GlobalStateContext)
 
-    const { posts } = states
+    const { posts, page, isLoading } = states
+
+    const { setPage } = setters
 
     const { getPosts } = getters
 
@@ -38,6 +40,12 @@ export default function FeedPage() {
             />
         )
     })
+
+    const changePage = (sum) => {
+        const nextPage = page + sum
+        setPage(nextPage)
+        getPosts(nextPage)
+    }
 
     return (
         <main>
@@ -75,7 +83,18 @@ export default function FeedPage() {
             <hr />
             <section>
                 <h2>Lista de Posts</h2>
-                {showPosts}
+                <nav>
+                    <h2>Selecione uma página</h2>
+                    {page !== 1 &&
+                        <button onClick={() => changePage(-1)}>Voltar página</button>
+                    }
+                    <span> Página {page} </span>
+                    {posts.length &&
+                        <button onClick={() => changePage(1)}>Próxima página</button>
+                    }
+                </nav>
+                <hr/>
+                {isLoading ? <p>Carregando...</p> : showPosts}
             </section>
         </main>
     )
