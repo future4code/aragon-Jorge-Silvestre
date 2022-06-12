@@ -2,6 +2,8 @@ import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../global/GlobalStateContext";
 import { requestChangeCommentVote, requestCreateCommentVote, requestDeleteCommentVote } from "../services/requests";
+import Button from "@mui/material/Button"
+
 
 function CommentCard(props) {
 
@@ -53,17 +55,17 @@ function CommentCard(props) {
     const showVoteButtons = (
         <>
             {userVote && isDownVoted ?
-                <button onClick={() => removeVote("down")}>Remover Voto "Não Gostei"</button>
-                : <button onClick={() => chooseVote("down")}>
+                <Button variant="outlined" onClick={() => removeVote("down")}>Remover Voto "Não Gostei"</Button>
+                : <Button variant="outlined" onClick={() => chooseVote("down")}>
                     {isUpVoted ? `Mudar voto para "Não gostei"` : `Votar em "Não Gostei"`}
-                </button>
+                </Button>
             }
             <br />
             {userVote && isUpVoted ?
-                <button onClick={() => removeVote("up")}>Remover voto "Gostei"</button>
-                : <button onClick={() => chooseVote("up")}>
+                <Button variant="outlined" onClick={() => removeVote("up")}>Remover voto "Gostei"</Button>
+                : <Button variant="outlined" onClick={() => chooseVote("up")}>
                     {isDownVoted ? `Mudar voto para "Gostei"` : `Votar em "Gostei"`}
-                </button>
+                </Button>
             }
         </>
     )

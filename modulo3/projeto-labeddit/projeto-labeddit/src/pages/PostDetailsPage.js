@@ -8,6 +8,12 @@ import useForm from "../hooks/useForm"
 import useProtectedPage from "../hooks/useProtectedPage"
 import { goBack, goToFeed } from "../routes/coordinator"
 import { requestCreateComment } from "../services/requests"
+import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import CssBaseline from '@mui/material/CssBaseline'
+import Footer from "../components/Footer"
+
 
 function PostDetailsPage() {
 
@@ -49,43 +55,62 @@ function PostDetailsPage() {
     }) : <p>Não há comentários para este post. Seja a primeira pessoa a comentar!</p>
 
     return (
-        <main>
+        <>
             <Header
                 isProtected={true}
             />
-            <hr />
-            <button onClick={() => goBack(navigate)}>Voltar</button>
-            <section>
-                <h2>Informações do Post</h2>
-                <PostCard
-                    key={post.id}
-                    post={post}
-                    isFeed={false}
-                />
-            </section>
-            <section>
-                <h2>Escreva o seu comentário</h2>
-                <form onSubmit={createComment}>
-                    <label htmlFor="body">Comentário: </label>
-                    <input
-                        id="body"
-                        type={"text"}
-                        name="body"
-                        value={form.body}
-                        onChange={onChange}
-                        title="O nome deve ter no mínimo 5 caracteres"
-                        required
-                    />
-                    <br />
-                    <button type="submit">Criar Post</button>
-                </form>
-            </section>
-            <hr />
-            <section>
-                <h2>Lista de Comentários</h2>
-                {showComments}
-            </section>
-        </main>
+            <Container>
+                <CssBaseline />
+
+                <Box
+                    fullWidth
+                    sx={{
+                        textAlign: "center",
+                        marginTop: 7,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        '& .MuiTextField-root': { margin: 1 },
+                        '& .MuiButton-root': { margin: 1 }
+                    }}
+                >
+                    <main>
+                        <Button variant="outlined" onClick={() => goBack(navigate)}>Voltar</Button>
+                        <section>
+                            <h2>Informações do Post</h2>
+                            <PostCard
+                                key={post.id}
+                                post={post}
+                                isFeed={false}
+                            />
+                        </section>
+                        <section>
+                            <h2>Escreva o seu comentário</h2>
+                            <form onSubmit={createComment}>
+                                <label htmlFor="body">Comentário: </label>
+                                <input
+                                    id="body"
+                                    type={"text"}
+                                    name="body"
+                                    value={form.body}
+                                    onChange={onChange}
+                                    title="O nome deve ter no mínimo 5 caracteres"
+                                    required
+                                />
+                                <br />
+                                <Button variant="outlined" type="submit">Criar Post</Button>
+                            </form>
+                        </section>
+                        <hr />
+                        <section>
+                            <h2>Lista de Comentários</h2>
+                            {showComments}
+                        </section>
+                    </main>
+                </Box>
+            </Container>
+            <Footer/>
+        </>
     )
 }
 

@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom"
 import GlobalStateContext from "../global/GlobalStateContext"
 import { goToPostDetailsPage } from "../routes/coordinator"
 import { requestChangePostVote, requestCreatePostVote, requestDeletePostVote } from "../services/requests"
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import Button from "@mui/material/Button"
+
 
 
 function PostCard(props) {
@@ -18,17 +22,17 @@ function PostCard(props) {
 
     const { setPost } = setters
 
-    const {getPosts} = getters
+    const { getPosts } = getters
 
     const { id, userId, title, body, createdAt, voteSum, commentCount, userVote } = props.post
 
     const date = createdAt && format(new Date(createdAt), 'dd/MM/yyyy')
 
     useEffect(() => {
-        if(userVote) {
+        if (userVote) {
             userVote === 1 ? setIsUpVoted(true) : setIsDownVoted(true)
         }
-    },[userVote])
+    }, [userVote])
 
     const goToComments = () => {
         setPost(props.post)
@@ -65,34 +69,36 @@ function PostCard(props) {
     const showVoteButtons = props.isFeed && (
         <>
             {userVote && isDownVoted ?
-                <button onClick={() => removeVote("down")}>Remover Voto "Não Gostei"</button>
-                : <button onClick={() => chooseVote("down")}>
+                <Button variant="outlined" onClick={() => removeVote("down")}>Remover Voto "Não Gostei"</Button>
+                : <Button variant="outlined" onClick={() => chooseVote("down")}>
                     {isUpVoted ? `Mudar voto para "Não gostei"` : `Votar em "Não Gostei"`}
-                </button>
+                </Button>
             }
             <br />
             {userVote && isUpVoted ?
-                <button onClick={() => removeVote("up")}>Remover voto "Gostei"</button>
-                : <button onClick={() => chooseVote("up")}>
+                <Button variant="outlined" onClick={() => removeVote("up")}>Remover voto "Gostei"</Button>
+                : <Button variant="outlined" onClick={() => chooseVote("up")}>
                     {isDownVoted ? `Mudar voto para "Gostei"` : `Votar em "Gostei"`}
-                </button>
+                </Button>
             }
         </>
     )
 
     return (
-        <article>
+        <Card sx={{ maxWidth: 345 }}>
             <h3>{title}</h3>
             <span><b>Autor: </b>{userId}</span>
             <p>Criado em {date}</p>
-            <img src={"https://picsum.photos/200/300?random=" + id} alt="Imagem aleatória do post" />
+            <CardMedia component="img"
+                height="194" src={"https://picsum.photos/200/300?random=" + id} alt="Imagem aleatória do post"
+            >
+            </CardMedia>
             <p><b>Descrição: </b>{body}</p>
             <p>Votos: {voteSum ? voteSum : 0}</p>
             {showVoteButtons}
             <p>Comentários: {commentCount ? commentCount : 0}</p>
-            {props.isFeed && <button onClick={goToComments}>Ver comentários</button>}
-            <hr />
-        </article>
+            {props.isFeed && <Button variant="outlined" onClick={goToComments}>Ver comentários</Button>}
+        </Card>
     )
 }
 
