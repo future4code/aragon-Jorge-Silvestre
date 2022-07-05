@@ -1,0 +1,21 @@
+{
+  "name": "template-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio1": "clear && tsc && node ./build/exercicio1.js",
+    "exercicio2": "clear && tsc && node ./build/exercicio2.js",
+    "exercicio3": "clear && tsc && node ./build/exercicio3.js",
+    "exercicio4": "clear && tsc && node ./build/exercicio4.js",
+    "exercicio5": "clear && tsc && node ./build/exercicio5.js",
+    "exercicio6": "clear && tsc && node ./build/exercicio6.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^4.7.4"
+  }
+}
