@@ -13,10 +13,11 @@ try {
     `)
 
     if (!checaIdExiste[0]) {
+        errorCode = 404
         throw new Error("Erro: taskId não existe");
     }
 
-    const [usuariosResponsaveis] = await connection.raw(`
+    const [pegarUsuariosResponsaveis] = await connection.raw(`
     SELECT 
     id, nickname
     FROM Users  
@@ -25,7 +26,7 @@ try {
     WHERE Responsibles.taskId = ${id};
     `)
     
-    res.status(200).send({message:"Success", Users: usuariosResponsaveis})
+    res.status(200).send({message:"Success", Users: pegarUsuariosResponsaveis})
 
 } catch (error) {
     res.status(errorCode).send({message: error.message})
@@ -35,13 +36,3 @@ try {
 
 
 
-// codigo lucas
-// (`
-//   SELECT
-//   Responsibles.taskId,
-//   Responsibles.userId
-//   FROM Responsibles
-//   JOIN Tasks
-//   ON Tasks.creatorUserId = Responsibles.userId
-//   WHERE Responsibles.taskId = ${taskId};
-//   `)

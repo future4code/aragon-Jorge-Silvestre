@@ -4,6 +4,10 @@ import { ping } from "./endpoints/ping";
 import { pegaListaUsuarios } from "./endpoints/pegaListaUsuarios";
 import { pegaTarefas } from "./endpoints/pegaTarefas";
 import { pegarUsuariosResponsaveisPorUmaTarefa } from "./endpoints/pegarUsuariosResponsaveisPorUmaTarefa";
+import { adicionarUsuarioResponsavelAUmaTarefa } from "./endpoints/adicionaUsuarioResponsavelAUmaTarefa";
+import { editaApelidoDoUsuario } from "./endpoints/editaApelidoDoUsuario";
+import { editaStatusDeUmaTarefa } from "./endpoints/editaStatusDeUmaTarefa";
+import { deletaTarefa } from "./endpoints/deletaTarefa";
 
 const app = express();
 
@@ -24,3 +28,11 @@ app.get("/users", pegaListaUsuarios)
 app.get("/tasks", pegaTarefas)
 
 app.get("/tasks/:taskId/users", pegarUsuariosResponsaveisPorUmaTarefa)
+
+app.post("/tasks/:taskId/users", adicionarUsuarioResponsavelAUmaTarefa)
+
+app.put("/users/:userId", editaApelidoDoUsuario)
+
+app.put("/tasks/:taskId", editaStatusDeUmaTarefa)
+
+app.delete("/tasks/:taskId", deletaTarefa)
