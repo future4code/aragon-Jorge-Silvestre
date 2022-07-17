@@ -29,7 +29,7 @@ try {
 
     const adicionaUsuarioResponsavel = await connection.raw(`
     INSERT INTO Responsibles
-    Values (${taskId},${userId})
+    Values (${userId}, ${taskId})
     `)
 
     res.status(200).send({message: "Sucesso! Usuário adicionado a tarefa"})
