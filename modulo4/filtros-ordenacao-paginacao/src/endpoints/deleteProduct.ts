@@ -14,7 +14,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
         const Product = Products[0]
 
         if (!Product) {
-            errorCode = 400
+            errorCode = 404
             throw new Error("Id do produto não existe");
         }
 
