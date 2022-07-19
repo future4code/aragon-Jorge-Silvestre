@@ -1,0 +1,31 @@
+### Ping
+GET http://localhost:3003/ping
+
+### Creat a new Perfume
+POST http://localhost:3003/perfume
+Content-Type: application/json
+
+{
+    "name": "1 Million",
+    "brand": "Paco Rabanne",
+    "price": 535,
+    "ml": 200
+}
+
+### Get all perfumes
+GET http://localhost:3003/perfume
+
+### Search perfumes by name, brand or price
+GET http://localhost:3003/perfume?q=paco+rabanne
+
+### Edit perfume price
+PUT http://localhost:3003/perfumes/06
+Content-Type: application/json
+
+{
+    "price": 523.80
+}
+
+
+### Delete perfume
+DELETE http://localhost:3003/perfumes/1658271659159
