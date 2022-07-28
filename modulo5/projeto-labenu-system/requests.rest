@@ -1,2 +1,14 @@
 ### Endpoint de teste
 GET http://localhost:3003/ping
+
+### Exercicio 0 
+GET http://localhost:3003/classrooms
+
+### Create a new class
+POST http://localhost:3003/classrooms
+Content-Type: application/json
+
+{
+    "name": "Teste",
+    "module": "1"
+}
