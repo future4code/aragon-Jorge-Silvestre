@@ -12,9 +12,25 @@ export class ClassroomDatabase extends BaseDatabase {
         return result
     }
 
-    public async createClassrooms(classroom: Classroom) {
+    public async createClassroom(classroom: Classroom) {
         await BaseDatabase
         .connection(ClassroomDatabase.TABLE_CLASSROOMS)
         .insert(classroom)
+    }
+
+    public async getActiveClassrooms() {
+        const result = await BaseDatabase
+        .connection(ClassroomDatabase.TABLE_CLASSROOMS)
+        .select()
+        .where("module", "!=", "0")
+
+        return result
+    }
+
+    public async updateModuleClassroom(classroomId: string, module:string) {
+        await BaseDatabase
+        .connection(ClassroomDatabase.TABLE_CLASSROOMS)
+        .update({module})
+        .where({id: classroomId})
     }
 }

@@ -22,8 +22,7 @@ export class Student {
         private name: string,
         private email: string,
         private birthdate: Date, 
-        private classroomId: null | string,
-        private hobbies: string[]
+        private classroomId: null | string
     ) {}
 
     public getId() {
@@ -46,10 +45,6 @@ export class Student {
         return this.classroomId
     }
 
-    public getHobbies() {
-        return this.hobbies
-    }
-
     public setId(newId: string) {
         this.id = newId
     }
@@ -68,9 +63,5 @@ export class Student {
 
     public setClassroomId(newClassroomId: null | string) {
         this.classroomId = newClassroomId
-    }
-
-    public setHobbies(newHobbies: string[]) {
-        this.hobbies = [...newHobbies]
     }
 }

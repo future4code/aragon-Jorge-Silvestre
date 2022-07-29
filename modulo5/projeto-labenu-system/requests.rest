@@ -1,14 +1,36 @@
-### Endpoint de teste
+### Endpoint Test 
 GET http://localhost:3003/ping
 
-### Exercicio 0 
+### Endpoint Get all classrooms 
 GET http://localhost:3003/classrooms
 
-### Create a new class
+### Endpoint Create a new class
 POST http://localhost:3003/classrooms
 Content-Type: application/json
 
 {
-    "name": "Teste",
+    "name": "Teste2",
     "module": "1"
+}
+
+### Endpoint Get active classrooms
+GET http://localhost:3003/active/classrooms
+
+### Endpoint Update module classroom
+PUT http://localhost:3003/classrooms/101
+Content-Type: application/json
+
+{
+    "module": "2"
+}
+
+### Endpoint Create a new student
+POST http://localhost:3003/student
+Content-Type: application/json
+
+{
+    "name": "Jorge",
+    "email": "jorge@hotmail.com",
+    "birthdate": "1999/04/01",
+    "classroomId": "102"
 }
