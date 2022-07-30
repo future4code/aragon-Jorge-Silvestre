@@ -34,3 +34,14 @@ Content-Type: application/json
     "birthdate": "1999/04/01",
     "classroomId": "102"
 }
+
+### Endpoint Get student by name, if not pass name returns all students
+GET http://localhost:3003/student?q=J
+
+### Endpoint Edit a student's class
+PUT http://localhost:3003/student/201
+Content-Type: application/json
+
+{
+    "newClassroom": "102"
+}

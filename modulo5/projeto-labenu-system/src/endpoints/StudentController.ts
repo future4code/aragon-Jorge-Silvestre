@@ -29,4 +29,41 @@ export class StudentController {
             res.status(errorCode).send({ message: error.message })
         }
     }
+
+    public async getStudentByName(req: Request, res: Response) {
+        let errorCode = 400
+        try {
+            const name = req.query.q as string
+
+            if (name) {
+                const studentDatabase = new StudentDatabase()
+                const result = await studentDatabase.getStudentByName(name)
+                return res.status(200).send({message: result})
+            }
+
+            const studentDatabase = new StudentDatabase()
+            const result = await studentDatabase.getAllStudents()
+            
+
+            res.status(200).send({message: result})
+
+        } catch (error) {
+            res.status(errorCode).send({ message: error.message })
+        }
+    }
+
+    public async editClassStudent(req: Request, res: Response) {
+        let errorCode = 400
+        try {
+            const studentId = req.params.id
+            const newClassroom = req.body.newClassroom
+            
+            const studentDatabase = new StudentDatabase()
+            await studentDatabase.editClassStudent(studentId, newClassroom)
+
+            res.status(200).send({message: "student class successfully edited"})
+        } catch (error) {
+            res.status(errorCode).send({message: error.message})
+        }
+    }
 }
