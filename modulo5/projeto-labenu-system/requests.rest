@@ -9,7 +9,7 @@ POST http://localhost:3003/classrooms
 Content-Type: application/json
 
 {
-    "name": "Teste2",
+    "name": "Teste3",
     "module": "1"
 }
 
@@ -17,11 +17,11 @@ Content-Type: application/json
 GET http://localhost:3003/active/classrooms
 
 ### Endpoint Update module classroom
-PUT http://localhost:3003/classrooms/101
+PUT http://localhost:3003/classrooms/102
 Content-Type: application/json
 
 {
-    "module": "2"
+    "module": "3"
 }
 
 ### Endpoint Create a new student
@@ -29,19 +29,22 @@ POST http://localhost:3003/student
 Content-Type: application/json
 
 {
-    "name": "Jorge",
-    "email": "jorge@hotmail.com",
+    "name": "teste3",
+    "email": "teste3@hotmail.com",
     "birthdate": "1999/04/01",
-    "classroomId": "102"
+    "classroomId": "1659035086875"
 }
 
 ### Endpoint Get student by name, if not pass name returns all students
 GET http://localhost:3003/student?q=J
 
 ### Endpoint Edit a student's class
-PUT http://localhost:3003/student/201
+PUT http://localhost:3003/student/206
 Content-Type: application/json
 
 {
-    "newClassroom": "102"
+    "newClassroom": "103"
 }
+
+### Get All Students Belonging To A Classroom
+GET http://localhost:3003/students/103
