@@ -1,0 +1,35 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "nickname": "yuzo",
+    "email": "yuzo@email.com",
+    "password": "abc123"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "yuzo@email.com",
+    "password": "abc123"
+}
+
+### Get all recipes
+GET http://localhost:3003/recipes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjhmOTkzLWRmMTYtNGQ5Ni05YTE2LWQzNTllMGZhODk0MSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NDc2MDQsImV4cCI6MTY1OTYzNDAwNH0.wjhBSguAwU1SBIe6bv3NcThDrgEEtqfa3vazyVGUf8Q
+
+### Register a new recipe
+POST http://localhost:3003/recipes/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjhmOTkzLWRmMTYtNGQ5Ni05YTE2LWQzNTllMGZhODk0MSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NDc2MDQsImV4cCI6MTY1OTYzNDAwNH0.wjhBSguAwU1SBIe6bv3NcThDrgEEtqfa3vazyVGUf8Q
+Content-Type: application/json
+
+{
+    "title": "Lasanha",
+    "description": "Lasanha de carne moída"
+}
