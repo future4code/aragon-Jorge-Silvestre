@@ -38,7 +38,7 @@ export class UserController {
             }
 
             if (!email.includes("@") || !email.includes(".com")) {
-                throw new Error("O parâmetro 'password' deve possuir ao menos 6 caracteres")
+                throw new Error("email incompleto")
             }
 
             const idGenerator = new IdGenerator()
@@ -71,6 +71,12 @@ export class UserController {
                 token
             })
         } catch (error) {
+            if (
+                typeof error.message === "string"
+                && error.message.includes("Duplicate entry")
+            ) {
+                return res.status(400).send("Email already taken")
+            }
             res.status(errorCode).send({ message: error.message })
         }
     }
@@ -99,7 +105,7 @@ export class UserController {
             }
 
             if (!email.includes("@") || !email.includes(".com")) {
-                throw new Error("O parâmetro 'password' deve possuir ao menos 6 caracteres")
+                throw new Error("email incompleto")
             }
 
             const userDatabase = new UserDatabase()
@@ -143,6 +149,46 @@ export class UserController {
             })
         } catch (error) {
             res.status(errorCode).send({ message: error.message })
+        }
+    }
+
+    public deleteUser = async (req: Request, res: Response) => {
+        let errorCode = 400
+        try {
+            const token = req.headers.authorization
+            const id = req.params.id 
+
+            const authenticator = new Authenticator()
+            const payload = authenticator.getTokenPayload(token)
+
+            if (!payload) {
+                errorCode = 401
+                throw new Error("Token faltando ou inválido");
+            }
+
+            if (payload.role !== USER_ROLES.ADMIN) {
+                errorCode = 403
+                throw new Error("Somente admin podem acessar esse endpoint");
+            }
+
+            const userDatabase = new UserDatabase()
+            const isUserExists = await userDatabase.checkIfExistsById(payload.id)
+
+            if (!isUserExists) {
+                errorCode = 401
+                throw new Error("Usuário não existe");
+            }
+
+            if(id === payload.id) {
+                throw new Error("Não é possivel deletar a propria conta");
+            }
+
+            await userDatabase.deleteUser(id)
+
+            res.status(200).send({message: "Usuario deletado com sucesso"})
+            
+        } catch (error) {
+            res.status(errorCode).send({message: error.message})
         }
     }
 }

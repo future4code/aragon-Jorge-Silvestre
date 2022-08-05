@@ -11,6 +11,11 @@ export class RecipeController {
         try {
             const token = req.headers.authorization
             const search = req.query.search as string
+            const sort = req.query.sort as string || "updated_at"
+            const order = req.query.order as string || "asc"
+            const limit = Number(req.query.limit) || 8
+            const page = Number(req.query.page) || 1
+            const offset = limit * (page - 1)
 
             if (!token) {
                 errorCode = 401
@@ -26,7 +31,13 @@ export class RecipeController {
             }
 
             const recipeDatabase = new RecipeDatabase()
-            const recipesDB = await recipeDatabase.getAllRecipes(search)
+            const recipesDB = await recipeDatabase.getAllRecipes(
+                search,
+                sort,
+                order,
+                limit,
+                offset
+            )
 
             const recipes = recipesDB.map((recipeDB) => {
                 return new Recipe(
@@ -61,15 +72,29 @@ export class RecipeController {
                 throw new Error("Token faltando ou inválido");
             }
 
+            if(!title || !description) {
+                errorCode = 401
+                throw new Error("Parâmetros faltando");
+            }
+
+            if(typeof title !== "string") {
+                throw new Error("Parâmetro 'title' deve ser uma string");
+            }
+
+            if(typeof description !== "string") {
+                throw new Error("Parâmetro 'description' deve ser uma string");
+            }
+
+            if(title.length < 3) {
+                throw new Error("O parâmetro 'title' deve possuir ao menos 3 caracteres");
+            }
+
+            if(description.length < 10) {
+                throw new Error("O parâmetro 'description' deve possuir ao menos 10 caracteres");
+            }
+
             const idGenerator = new IdGenerator()
             const id = idGenerator.generate()
-
-            const data = new Date()
-            const dia = String(data.getDate()).padStart(2, "0")
-            const mes = String(data.getMonth() + 1).padStart(2, "0")
-            const ano = data.getFullYear()
-
-            const dataAtual = `${ano}/${mes}/${dia}`
 
             const recipe = new Recipe(
                 id,
@@ -108,6 +133,27 @@ export class RecipeController {
             if (!payload) {
                 errorCode = 401
                 throw new Error("Token faltando ou inválido");
+            }
+
+            if(!title || !description) {
+                errorCode = 401
+                throw new Error("Parâmetros faltando");
+            }
+
+            if(typeof title !== "string") {
+                throw new Error("Parâmetro 'title' deve ser uma string");
+            }
+
+            if(typeof description !== "string") {
+                throw new Error("Parâmetro 'description' deve ser uma string");   
+            }
+
+            if(title.length < 3) {
+                throw new Error("O parâmetro 'title' deve possuir ao menos 3 caracteres");
+            }
+
+            if(description.length < 10) {
+                throw new Error("O parâmetro 'description' deve possuir ao menos 10 caracteres");
             }
 
             const recipeDatabase = new RecipeDatabase()

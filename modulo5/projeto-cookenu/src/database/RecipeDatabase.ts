@@ -4,7 +4,13 @@ import { BaseDatabase } from "./BaseDatabase";
 export class RecipeDatabase extends BaseDatabase {
     public static TABLE_RECIPES = "Cookenu_Recipes"
 
-    public getAllRecipes = async (search: string | undefined) => {
+    public getAllRecipes = async (
+        search: string | undefined,
+        sort: string,
+        order: string,
+        limit: number,
+        offset: number
+     ) => {
         let recipesDB:IRecipeDB[] = []
         
         if(search) {
@@ -12,10 +18,16 @@ export class RecipeDatabase extends BaseDatabase {
             .connection(RecipeDatabase.TABLE_RECIPES)
             .select()
             .where("title", "LIKE", `%${search}%`)
+            .orderBy(sort, order)
+            .limit(limit)
+            .offset(offset)
         } else {
             recipesDB = await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)
             .select()
+            .orderBy(sort, order)
+            .limit(limit)
+            .offset(offset)
         }
         
         return recipesDB

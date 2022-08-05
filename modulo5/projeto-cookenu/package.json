@@ -10,7 +10,7 @@
     "migrations": "tsc && node ./build/database/migrations/Migrations.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "JorgeFVS",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.12",

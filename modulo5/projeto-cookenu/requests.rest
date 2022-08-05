@@ -16,8 +16,8 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "jorge@email.com",
-    "password": "abc123"
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
 }
 
 ### Get recipes by title, if the title is not passed it returns all recipes
@@ -47,3 +47,7 @@ Content-Type: application/json
 ### Delete recipe (protected)
 DELETE http://localhost:3003/recipes/e6e342d6-a72a-4777-9c9c-cda01edba210
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDYwMmMwLWFiNzktNDEyZC1iNDRkLWViMzcxNTQ2OTNlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MjQ4NTEsImV4cCI6MTY1OTcxMTI1MX0.fxnmnRHjDslSF6_HJ9mv94armkSe4A3nH4eDDVdk_JI
+
+### Delete user (protected)
+DELETE http://localhost:3003/users/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcyMjkxMSwiZXhwIjoxNjU5ODA5MzExfQ.GWIzmvLkuyp5tlqyCUYPtCOReygTzCtY7E-JiARYdcg
