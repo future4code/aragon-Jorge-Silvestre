@@ -165,13 +165,21 @@ export class UserBusiness {
         )
 
         const users = usersDB.map((userDB) => {
-            return new User(
+            const user = new User(
                 userDB.id,
                 userDB.name,
                 userDB.email,
                 userDB.password,
                 userDB.role
             )
+            
+         const userResponse = {
+            id: user.getId(),
+            name: user.getName(),
+            email: user.getEmail()
+         }
+            
+            return userResponse
         })
 
         const response = {
