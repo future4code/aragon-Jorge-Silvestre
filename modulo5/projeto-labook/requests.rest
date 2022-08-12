@@ -10,3 +10,25 @@ Content-Type: application/json
     "email": "beltrano@gmail.com",
     "password": "abc123"
 }
+
+### Endpoint Login 
+POST http://localhost:3003/users/login 
+Content-Type: application/json
+
+{
+    "email": "beltrano@gmail.com",
+    "password": "abc123"
+}
+
+### Endpoint Create post
+POST http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlMjNjNjNmLWViNWYtNDUyOS1iNzQ0LTU3MzI2YWI5Njk2MyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzMzQ3MzAsImV4cCI6MTY2MDQyMTEzMH0.XNTFIRi2Ygmn8i2RgtH7P3ECLGGwCi3E-Vd9qqNgRMI
+Content-Type: application/json
+
+{
+    "content": "O melhor do mundo"
+}
+
+### Endpoint Get all posts
+GET http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlMjNjNjNmLWViNWYtNDUyOS1iNzQ0LTU3MzI2YWI5Njk2MyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzMzQ3MzAsImV4cCI6MTY2MDQyMTEzMH0.XNTFIRi2Ygmn8i2RgtH7P3ECLGGwCi3E-Vd9qqNgRMI

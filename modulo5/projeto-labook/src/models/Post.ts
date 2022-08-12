@@ -50,3 +50,29 @@ export class Post {
         this.likes = newLikes
     }
 }
+
+export interface ICreatePostInputDTO {
+    token: string,
+    content: string
+}
+
+export interface IGetPostsInputDTO {
+    token: string,
+    search: string,
+    order: string,
+    sort: string,
+    limit: string,
+    page: string
+}
+
+export interface IGetPostsDBDTO {
+    search: string,
+    order: string,
+    sort: string,
+    limit: number,
+    offset: number
+}
+
+export interface IGetPostsOutputDTO {
+    posts: Post[]
+}
