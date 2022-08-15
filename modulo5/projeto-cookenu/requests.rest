@@ -1,0 +1,53 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "nickname": "jorge",
+    "email": "jorge@email.com",
+    "password": "abc123"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### Get recipes by title, if the title is not passed it returns all recipes
+GET http://localhost:3003/recipes?search=p
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDYwMmMwLWFiNzktNDEyZC1iNDRkLWViMzcxNTQ2OTNlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MjQ4NTEsImV4cCI6MTY1OTcxMTI1MX0.fxnmnRHjDslSF6_HJ9mv94armkSe4A3nH4eDDVdk_JI
+
+### Register a new recipe (protected)
+POST http://localhost:3003/recipes/530602c0-ab79-412d-b44d-eb37154693ed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDYwMmMwLWFiNzktNDEyZC1iNDRkLWViMzcxNTQ2OTNlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MjQ4NTEsImV4cCI6MTY1OTcxMTI1MX0.fxnmnRHjDslSF6_HJ9mv94armkSe4A3nH4eDDVdk_JI
+Content-Type: application/json
+
+{
+    "title": "Lasanha",
+    "description": "Lasanha de carne moída"
+}
+
+### Edit recipe (protected)
+PUT http://localhost:3003/recipes/e6e342d6-a72a-4777-9c9c-cda01edba210
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDYwMmMwLWFiNzktNDEyZC1iNDRkLWViMzcxNTQ2OTNlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MjQ4NTEsImV4cCI6MTY1OTcxMTI1MX0.fxnmnRHjDslSF6_HJ9mv94armkSe4A3nH4eDDVdk_JI 
+Content-Type: application/json
+
+{
+    "title": "Lasanha tradicional",
+    "description": "Lasanha de frango"
+}
+
+### Delete recipe (protected)
+DELETE http://localhost:3003/recipes/e6e342d6-a72a-4777-9c9c-cda01edba210
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDYwMmMwLWFiNzktNDEyZC1iNDRkLWViMzcxNTQ2OTNlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MjQ4NTEsImV4cCI6MTY1OTcxMTI1MX0.fxnmnRHjDslSF6_HJ9mv94armkSe4A3nH4eDDVdk_JI
+
+### Delete user (protected)
+DELETE http://localhost:3003/users/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcyMjkxMSwiZXhwIjoxNjU5ODA5MzExfQ.GWIzmvLkuyp5tlqyCUYPtCOReygTzCtY7E-JiARYdcg
