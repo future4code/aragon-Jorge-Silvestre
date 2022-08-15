@@ -32,3 +32,7 @@ Content-Type: application/json
 ### Endpoint Get all posts
 GET http://localhost:3003/posts
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlMjNjNjNmLWViNWYtNDUyOS1iNzQ0LTU3MzI2YWI5Njk2MyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzMzQ3MzAsImV4cCI6MTY2MDQyMTEzMH0.XNTFIRi2Ygmn8i2RgtH7P3ECLGGwCi3E-Vd9qqNgRMI
+
+### Endpoint Delete post
+DELETE http://localhost:3003/posts/995c5dc0-7dc9-404a-990f-aa77a91a749e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlMjNjNjNmLWViNWYtNDUyOS1iNzQ0LTU3MzI2YWI5Njk2MyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjA0OTAwMDEsImV4cCI6MTY2MDU3NjQwMX0.WfhJeq-H5cu6Y7RXvIKRbPbKoAxQWUaDjvjYqHHgjx4

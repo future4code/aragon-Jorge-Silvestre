@@ -1,5 +1,6 @@
 import { PostDatabase } from "../database/PostDatabase"
-import { ICreatePostInputDTO, IGetPostsDBDTO, IGetPostsInputDTO, IGetPostsOutputDTO, Post } from "../models/Post"
+import { ICreatePostInputDTO, IDeletePostInputDTO, IGetPostsDBDTO, IGetPostsInputDTO, IGetPostsOutputDTO, Post } from "../models/Post"
+import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -88,6 +89,42 @@ export class PostBusiness {
 
         const response: IGetPostsOutputDTO = {
             posts
+        }
+
+        return response
+    }
+
+    public deletePost = async (input: IDeletePostInputDTO) => {
+        const {token, postId} = input
+
+        const payload = this.authenticator.getTokenPayload(token)
+
+        if(!payload) {
+            throw new Error("Token inválido ou faltando");
+        }
+
+        const postDB = await this.postDatabase.findById(postId)
+
+        if(!postDB) {
+            throw new Error("Post a ser deletado não encontrado");
+        }
+
+        const post = new Post(
+            postDB.id,
+            postDB.content,
+            postDB.user_id
+        )
+
+        if(payload.role === USER_ROLES.NORMAL) {
+            if(payload.id !== post.getUserId()) {
+                throw new Error("Este post não pode ser deletado por esse usuário");
+            }
+        }
+
+        await this.postDatabase.deletePostById(post.getId())
+        
+        const response = {
+            message: "Post deletado com sucesso"
         }
 
         return response

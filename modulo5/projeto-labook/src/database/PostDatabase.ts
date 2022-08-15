@@ -13,22 +13,39 @@ export class PostDatabase extends BaseDatabase {
         }
 
         await BaseDatabase
-        .connection(PostDatabase.TABLE_POSTS)
-        .insert(postDB)
+            .connection(PostDatabase.TABLE_POSTS)
+            .insert(postDB)
     }
 
     public getPosts = async (input: IGetPostsDBDTO) => {
-        const {search, order, sort, limit, offset} = input
+        const { search, order, sort, limit, offset } = input
 
         const postsDB: IPostDB[] = await BaseDatabase
-        .connection(PostDatabase.TABLE_POSTS)
-        .select()
-        .where("content", "LIKE", `%${search}%`)
-        .orderBy(order, sort)
-        .limit(limit)
-        .offset(offset)
+            .connection(PostDatabase.TABLE_POSTS)
+            .select()
+            .where("content", "LIKE", `%${search}%`)
+            .orderBy(order, sort)
+            .limit(limit)
+            .offset(offset)
 
         return postsDB
+    }
+
+    public findById = async (id: string) => {
+
+        const postsDB: IPostDB[] = await BaseDatabase
+            .connection(PostDatabase.TABLE_POSTS)
+            .select()
+            .where({ id })
+
+        return postsDB[0]
+    }
+
+    public deletePostById = async (id: string) => {
+        await BaseDatabase
+        .connection(PostDatabase.TABLE_POSTS)
+        .delete()
+        .where({ id })
     }
 
 }
