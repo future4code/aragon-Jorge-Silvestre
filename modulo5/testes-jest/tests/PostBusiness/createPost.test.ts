@@ -13,15 +13,17 @@ describe("Testando PostBusiness", () => {
         new AuthenticatorMock()
     )
 
-    test("create Post bem sucedido", async () => {
+    test("createPost bem sucedido", async () => {
         const input: ICreatePostInputDTO = {
-            token: "token-mock",
+            token: "token-astrodev",
             content: "Receba!" 
         }
 
         const response = await postBusiness.createPost(input)
 
         expect(response.message).toEqual("Post criado com sucesso")
-        expect(response.post).toEqual("")
+        expect(response.post.getId()).toEqual("id-mock")
+        expect(response.post.getContent()).toEqual("Receba!")
+        expect(response.post.getUserId()).toEqual("101")
     })
 })

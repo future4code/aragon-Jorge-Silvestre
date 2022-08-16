@@ -41,7 +41,7 @@ export class PostDatabase extends BaseDatabase {
         return result[0].likes as number
     }
 
-    public findPostById = async (postId: string) => {
+    public findPostById = async (postId: string): Promise<IPostDB | undefined> => {
         const postsDB: IPostDB[] = await BaseDatabase
             .connection(PostDatabase.TABLE_POSTS)
             .select()
@@ -57,7 +57,7 @@ export class PostDatabase extends BaseDatabase {
             .where({ id: postId })
     }
 
-    public findLike = async (postId: string, userId: string) => {
+    public findLike = async (postId: string, userId: string): Promise<ILikeDB | undefined> => {
         const likesDB: ILikeDB[] = await BaseDatabase
             .connection(PostDatabase.TABLE_LIKES)
             .select()

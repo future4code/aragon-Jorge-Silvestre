@@ -20,7 +20,7 @@ export class PostDatabaseMock extends BaseDatabase {
     }
 
     public getPosts = async (): Promise<IPostDB[]> => {
-        return [
+        const posts:IPostDB[] = [
             {
                 id: "201",
                 content: "Olá, sou novo por aqui!",
@@ -37,10 +37,17 @@ export class PostDatabaseMock extends BaseDatabase {
                 user_id: "103"
             }
         ]
+
+        return posts
     }
 
     public getLikes = async (postId: string) => {
-        
+        switch(postId) {
+            case "201": 
+                return 3
+            default:
+                return 0
+        }
     }
 
     public findPostById = async (postId: string) => {
@@ -50,7 +57,7 @@ export class PostDatabaseMock extends BaseDatabase {
                     id: "201",
                     content: "Olá, sou novo por aqui!",
                     user_id: "101"
-                }
+                } as IPostDB
 
             default:
                 return undefined
@@ -62,7 +69,17 @@ export class PostDatabaseMock extends BaseDatabase {
     }
 
     public findLike = async (postId: string, userId: string) => {
+        switch (postId) {
+            case "201":
+                return userId === "101" ? {
+                    id: "301",
+                    post_id: "201",
+                    user_id: "101"
+                } as ILikeDB : undefined
         
+            default:
+                undefined
+        }
     }
 
     public addLike = async (likeDB: ILikeDB) => {
