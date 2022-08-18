@@ -33,8 +33,8 @@ describe("Testando UserBusiness", () => {
         try {
             const input: ISignupInputDTO = {
                 name: "",
-                email: "jorge@gmail.com",
-                password: "abc123"
+                email: "astrodev@gmail.com",
+                password: "bananinha"
             }
 
             await userBusiness.signup(input)
@@ -51,9 +51,9 @@ describe("Testando UserBusiness", () => {
 
         try {
             const input: ISignupInputDTO = {
-                name: "jorge",
-                email: "jorge@gmail.com",
-                password: "abc12"
+                name: "Astrodev",
+                email: "astrodev@gmail.com",
+                password: "banan"
             }
 
             await userBusiness.signup(input)
@@ -66,14 +66,14 @@ describe("Testando UserBusiness", () => {
 
     })
 
-    test("deve retornar erro caso passe um email inválido", async () => {
+    test("deve retornar erro caso passe um email com formato inválido", async () => {
         expect.assertions(2)
         
         try {
             const input: ISignupInputDTO = {
-                name: "jorge",
-                email: "jorge.com",
-                password: "abc123"
+                name: "Astrodev",
+                email: "astrodev.com",
+                password: "bananinha"
             }
 
             await userBusiness.signup(input)
