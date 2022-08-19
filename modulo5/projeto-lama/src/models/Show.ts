@@ -16,7 +16,7 @@ export class Show {
         private band: string,
         private startsAt: Date,
         private tickets: number = 5000
-    ) {}
+    ) { }
 
     public getId = () => {
         return this.id
@@ -60,4 +60,24 @@ export interface ICreateShowInputDTO {
 export interface ICreateShowOutputDTO {
     message: string,
     show: Show
+}
+
+export interface IGetShowsInputDTO {
+    search: string,
+    order: string,
+    sort: string,
+    limit: string,
+    page: string
+}
+
+export interface IGetShowsDBDTO {
+    search: string,
+    order: string,
+    sort: string,
+    limit: number,
+    offset: number
+}
+
+export interface IGetShowsOutputDTO {
+    showsDB: IShowDB[]
 }

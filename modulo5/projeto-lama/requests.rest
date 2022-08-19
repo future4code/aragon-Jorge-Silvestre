@@ -16,8 +16,8 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "astrodev@gmail.com",
-    "password": "bananinha"
+    "email": "fulano@gmail.com",
+    "password": "qwerty00"
 }
 
 ### Endpoint Create Show
@@ -29,5 +29,9 @@ Content-Type: application/json
     "band": "Bastille",
     "startsAt": "2022/12/05"
 }
+
+### Endpoint get Shows
+GET http://localhost:3003/shows
+
 
 

@@ -2,7 +2,7 @@ import { ShowDatabase } from "../database/ShowDatabase"
 import { ForbiddenError } from "../errors/ForbiddenError"
 import { RequestError } from "../errors/RequestError"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
-import { ICreateShowInputDTO, ICreateShowOutputDTO, Show } from "../models/Show"
+import { ICreateShowInputDTO, ICreateShowOutputDTO, IGetShowsDBDTO, IGetShowsInputDTO, IGetShowsOutputDTO, Show } from "../models/Show"
 import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
 import { IdGenerator } from "../services/IdGenerator"
@@ -60,6 +60,33 @@ export class ShowBusiness {
         }
 
         return response
+    }
+
+    public getShows = async (input: IGetShowsInputDTO) => {
+        const search = input.search || ""
+        const order = input.order || "band"
+        const sort = input.sort || "ASC"
+        const limit = Number(input.limit) || 10
+        const page = Number(input.page) || 1
+
+        const offset = limit * (page - 1)
+
+        const getShowsInputDB: IGetShowsDBDTO = {
+            search,
+            order,
+            sort,
+            limit, 
+            offset
+        }
+
+        const showsDB = await this.showDatabase.getShows(getShowsInputDB)
+
+        const response: IGetShowsOutputDTO = {
+            showsDB
+        }
+
+        return response
+
     }
 
 }

@@ -1,4 +1,4 @@
-import { IShowDB, Show } from "../models/Show"
+import { IGetShowsDBDTO, IShowDB, Show } from "../models/Show"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class ShowDatabase extends BaseDatabase {
@@ -21,6 +21,20 @@ export class ShowDatabase extends BaseDatabase {
         await BaseDatabase
             .connection(ShowDatabase.TABLE_SHOWS)
             .insert(showDB)
+    }
+
+    public getShows = async (show: IGetShowsDBDTO) => {
+        const {search, order, sort, limit, offset} = show
+
+        const showsDB: IShowDB[] = await BaseDatabase
+            .connection(ShowDatabase.TABLE_SHOWS)
+            .select()
+            .where("band", "LIKE", `%${search}%`)
+            .orderBy(order, sort)
+            .limit(limit)
+            .offset(offset)
+
+        return showsDB
     }
 
 }
