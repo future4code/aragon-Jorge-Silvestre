@@ -1,0 +1,36 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Endpoint signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "jorge",
+    "email": "jorge@gmail.com",
+    "password": "jorge99"
+}
+
+### Endpoint login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "jorge@gmail.com",
+    "password": "jorge99"
+}
+
+### Endpoint Create product
+POST http://localhost:3003/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiMzljMzQ3LWFiYTEtNDNlNi04ZmIwLTg0OTk3YjY4NzdlYiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjEzNDYxOTEsImV4cCI6MTY2MTQzMjU5MX0.aso0uySKRWgLxwHGDzc6IS0Y_4qAIzJTXKpHRmUHamg
+Content-Type: application/json
+
+{
+    "name": "VESTIDO MOLETOM COM CAPUZ"
+}
+
+### Endpoint get products
+GET http://localhost:3003/products?search=femini
+
+
+
