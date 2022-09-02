@@ -1,0 +1,37 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Endpoint Signup
+POST http://localhost:3003/users/signup 
+Content-Type: application/json
+
+{
+    "name": "jorge",
+    "email": "jorge@gmail.com",
+    "password": "123abc"
+}
+
+### Endpoint Login
+POST http://localhost:3003/users/login 
+Content-Type: application/json
+
+{
+    "email": "fulano@gmail.com",
+    "password": "qwerty00"
+}
+
+### Endpoint Create Show
+POST http://localhost:3003/shows
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDg0NjU2MSwiZXhwIjoxNjYwOTMyOTYxfQ.Ol-2J15JUfJaPiMy1wgQW-fAgegSG2s_nf5CL3mlY88
+Content-Type: application/json
+
+{
+    "band": "Bastille",
+    "startsAt": "2022/12/05"
+}
+
+### Endpoint get Shows
+GET http://localhost:3003/shows
+
+
+
