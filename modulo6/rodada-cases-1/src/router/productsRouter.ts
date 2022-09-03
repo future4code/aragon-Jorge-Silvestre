@@ -18,5 +18,6 @@ const productsController = new ProductsController(
 )
 
 productsRouter.post("/", productsController.createProduct)
-productsRouter.get("/", productsController.getProducts)
+productsRouter.get("/:productId", productsController.getProductsById)
+productsRouter.get("/", productsController.getProductsByName)
 

@@ -1,7 +1,7 @@
 import { ProductsDatabase } from "../database/ProductsDatabase"
 import { RequestError } from "../errors/RequestError"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
-import { ICreateProductInputDTO, ICreateProductOutputDTO, IGetProductsInputDTO, IGetProductsOutputDTO, Products } from "../models/Products"
+import { ICreateProductInputDTO, ICreateProductOutputDTO, IGetProductsByIdInputDTO, IGetProductsByNameInputDTO, IGetProductsByNameOutputDTO, Products } from "../models/Products"
 import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
@@ -48,10 +48,34 @@ export class ProductsBusiness {
 
     }
 
-    public getProducts = async (input: IGetProductsInputDTO) => {
+    public getProductsById = async (input: IGetProductsByIdInputDTO) => {
+        const productId = input.productId
+
+        const productDB = await this.productsDatabase.getProductById(productId)
+
+        const product = productDB.map((productDB) => {
+            return new Products(
+                productDB.id,
+                productDB.name
+            )
+        })
+
+
+        const tagsId = await this.productsDatabase.getTagsId(product[0].getId())
+        
+        product[0].setTags(tagsId)
+
+        const response = {
+            product
+        }
+
+        return response
+    }
+
+    public getProductsByName = async (input: IGetProductsByNameInputDTO) => {
         const search = input.search || ""
 
-        const productsDB = await this.productsDatabase.getProducts(search)
+        const productsDB = await this.productsDatabase.getProductsByName(search)
 
         const products = productsDB.map((productDB) => {
             return new Products(
@@ -72,11 +96,10 @@ export class ProductsBusiness {
 
 
             product.setTags(tags)
-            console.log(product)
         }
 
         
-        const response: IGetProductsOutputDTO = {
+        const response: IGetProductsByNameOutputDTO = {
             products
         }
 

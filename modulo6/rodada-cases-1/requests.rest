@@ -29,7 +29,10 @@ Content-Type: application/json
     "name": "VESTIDO MOLETOM COM CAPUZ"
 }
 
-### Endpoint get products
+### Endpoint get products by Id
+GET http://localhost:3003/products/8371
+
+### Endpoint get products by name
 GET http://localhost:3003/products?search=femini
 
 

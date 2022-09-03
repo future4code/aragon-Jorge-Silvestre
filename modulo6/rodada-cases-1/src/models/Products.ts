@@ -56,10 +56,15 @@ export interface ICreateProductOutputDTO {
     product: Products
 }
 
-export interface IGetProductsInputDTO {
+export interface IGetProductsByIdInputDTO {
+    productId: string
+}
+
+export interface IGetProductsByNameInputDTO {
     search: string
 }
 
-export interface IGetProductsOutputDTO {
+export interface IGetProductsByNameOutputDTO {
     products: Products[]
 }
+

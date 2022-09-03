@@ -1,4 +1,4 @@
-import { IGetProductsInputDTO, IProductsDB, Products } from "../models/Products"
+import { IProductsDB, Products } from "../models/Products"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class ProductsDatabase extends BaseDatabase {
@@ -24,7 +24,16 @@ export class ProductsDatabase extends BaseDatabase {
             .insert(productsDB)
     }
 
-    public getProducts = async (search: string) => {
+    public getProductById = async (productId: string) => {
+        const productDB = await BaseDatabase
+        .connection(ProductsDatabase.TABLE_Products)
+        .select()
+        .where("id", "=", `${productId}`)
+
+        return productDB
+    }
+
+    public getProductsByName = async (search: string) => {
         const productsDB = await BaseDatabase
         .connection(ProductsDatabase.TABLE_Products)
         .select()

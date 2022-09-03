@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ProductsBusiness } from "../business/ProductsBusiness";
 import { BaseError } from "../errors/BaseError";
-import { ICreateProductInputDTO, IGetProductsInputDTO } from "../models/Products";
+import { ICreateProductInputDTO, IGetProductsByIdInputDTO, IGetProductsByNameInputDTO } from "../models/Products";
 
 export class ProductsController {
     constructor(
@@ -26,22 +26,44 @@ export class ProductsController {
         }
     }
 
-    public getProducts = async (req: Request, res: Response) => {
+    public getProductsById = async (req: Request, res: Response) => {
         try {
-            const input: IGetProductsInputDTO = {
+
+            const input: IGetProductsByIdInputDTO = {
+                productId: req.params.productId
+            }
+        
+
+            const response = await this.productsBusiness.getProductsById(input)
+            res.status(200).send(response)
+
+        } catch (error: unknown) {
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            res.status(500).send({ message: "Erro inesperado ao buscar produtos por Id" })
+        }
+    }
+
+    public getProductsByName = async (req: Request, res: Response) => {
+        try {
+            const input: IGetProductsByNameInputDTO = {
                 search: req.query.search as string
             }
 
-            const response = await this.productsBusiness.getProducts(input)
+            const response = await this.productsBusiness.getProductsByName(input)
             res.status(200).send(response)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 return res.status(error.statusCode).send({ message: error.message })
             }
 
-            res.status(500).send({ message: "Erro inesperado ao buscar produtos" })
+            res.status(500).send({ message: "Erro inesperado ao buscar produtos pelo nome" })
         }
     }
+
+
 
 
 }
