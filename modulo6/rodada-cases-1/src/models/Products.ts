@@ -68,3 +68,6 @@ export interface IGetProductsByNameOutputDTO {
     products: Products[]
 }
 
+export interface IGetProductsByTagInputDTO {
+    search: string
+}

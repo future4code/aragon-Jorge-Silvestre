@@ -70,7 +70,28 @@ export const tagsDB: ITagsDB[] = [
   {
     id: "205",
     name: "inverno"
+  },
+  {
+    id: "206",
+    name: "metal"
+  },
+  {
+    id: "207",
+    name: "colorido"
+  },
+  {
+    id: "208",
+    name: "estampas"
+  },
+  {
+    id: "209",
+    name: "moderno"
+  },
+  {
+    id: "210",
+    name: "descolado"
   }
+
 ]
 
 export const tagsProducts: ITagsProductsDB[] = [
@@ -98,6 +119,56 @@ export const tagsProducts: ITagsProductsDB[] = [
     id: "305",
     product_id: "8358",
     tag_id: "205"
+  },
+  {
+    id: "306",
+    product_id: "8371",
+    tag_id: "206"
+  },
+  {
+    id: "307",
+    product_id: "8367",
+    tag_id: "207"
+  },
+  {
+    id: "308",
+    product_id: "8363",
+    tag_id: "208"
+  },
+  {
+    id: "309",
+    product_id: "8360",
+    tag_id: "209"
+  },
+  {
+    id: "310",
+    product_id: "8358",
+    tag_id: "210"
+  },
+  {
+    id: "311",
+    product_id: "8371",
+    tag_id: "202"
+  },
+  {
+    id: "312",
+    product_id: "8367",
+    tag_id: "201"
+  },
+  {
+    id: "313",
+    product_id: "8363",
+    tag_id: "204"
+  },
+  {
+    id: "314",
+    product_id: "8360",
+    tag_id: "203"
+  },
+  {
+    id: "315",
+    product_id: "8358",
+    tag_id: "206"
   }
 
 ]

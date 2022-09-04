@@ -1,7 +1,7 @@
 import { ProductsDatabase } from "../database/ProductsDatabase"
 import { RequestError } from "../errors/RequestError"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
-import { ICreateProductInputDTO, ICreateProductOutputDTO, IGetProductsByIdInputDTO, IGetProductsByNameInputDTO, IGetProductsByNameOutputDTO, Products } from "../models/Products"
+import { ICreateProductInputDTO, ICreateProductOutputDTO, IGetProductsByIdInputDTO, IGetProductsByNameInputDTO, IGetProductsByNameOutputDTO, IGetProductsByTagInputDTO, Products } from "../models/Products"
 import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
@@ -62,7 +62,7 @@ export class ProductsBusiness {
 
 
         const tagsId = await this.productsDatabase.getTagsId(product[0].getId())
-        
+
         product[0].setTags(tagsId)
 
         const response = {
@@ -98,8 +98,26 @@ export class ProductsBusiness {
             product.setTags(tags)
         }
 
-        
+
         const response: IGetProductsByNameOutputDTO = {
+            products
+        }
+
+        return response
+    }
+
+    public getProductsByTag = async (input: IGetProductsByTagInputDTO) => {
+        const search = input.search
+
+        const tagDB = await this.productsDatabase.getTags(search)
+
+        const tag = tagDB.map((tagDB) => {
+            return tagDB.id
+        })
+
+        const products = await this.productsDatabase.getProductByTag(tag[0])
+
+        const response = {
             products
         }
 

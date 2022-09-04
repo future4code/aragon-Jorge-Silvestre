@@ -30,10 +30,13 @@ Content-Type: application/json
 }
 
 ### Endpoint get products by Id
-GET http://localhost:3003/products/8371
+GET http://localhost:3003/products/id/8371
 
 ### Endpoint get products by name
-GET http://localhost:3003/products?search=femini
+GET http://localhost:3003/products?search=feminino
+
+### Endpoint get products by tag
+GET http://localhost:3003/products/tag?search=balada
 
 
 
